@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import joblib
 import numpy as np
+import warnings
 
 app = Flask(__name__)
 
@@ -20,9 +21,15 @@ def health():
 def predict():
     data = request.get_json(force=True)
     features = np.array(data["features"]).reshape(1, -1)
-    features_scaled = scaler.transform(features)
-    prediction = model.predict(features_scaled)
+    
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        features_scaled = scaler.transform(features)
+        prediction = model.predict(features_scaled)
+    
     return jsonify({"fraud": bool(prediction[0])})
+
+print("✅ Prediction complete! Result:", bool(prediction[0]))
 
 
 if __name__ == "__main__":
