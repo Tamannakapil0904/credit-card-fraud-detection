@@ -7,6 +7,10 @@ app = Flask(__name__)
 model = joblib.load("models/fraud_model.pkl")
 scaler = joblib.load("models/scaler.pkl")
 
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({"message": "Credit Card Fraud Detection API is running!"}), 200
+
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify({"status": "OK"}), 200
