@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import joblib
 import numpy as np
 import warnings
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -21,10 +22,14 @@ def health():
 def predict():
     data = request.get_json(force=True)
     features = np.array(data["features"]).reshape(1, -1)
-    
+
+    # Dummy feature names (if you had 30 PCA features originally)
+    feature_names = [f'V{i}' for i in range(1, 31)]
+    features_df = pd.DataFrame(features, columns=feature_names)
+
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
-        features_scaled = scaler.transform(features)
+        features_scaled = scaler.transform(features_df)
         prediction = model.predict(features_scaled)
 
     print("✅ Prediction complete! Result:", bool(prediction[0]))
