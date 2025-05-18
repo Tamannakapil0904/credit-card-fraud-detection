@@ -1,4 +1,29 @@
 # 💳 Credit Card Fraud Detection API
+This project is a machine learning-powered system that detects fraudulent credit card transactions using real-world data. It includes a REST API built with Flask, model training using Logistic Regression, and automated testing with Pytest — everything recruiters love to see in a well-rounded software/project engineer!
+
+---
+
+## 🚀 Features
+
+- ✅ Model training using Logistic Regression
+- ✅ Data preprocessing with StandardScaler
+- ✅ REST API using Flask
+- ✅ Fraud prediction endpoint (`/predict`)
+- ✅ Health check endpoint (`/health`)
+- ✅ Unit/API testing with `pytest`
+- ✅ GitHub-ready structure with modular code
+
+---
+
+## 🧠 Technologies Used
+
+- Python 3.x  
+- Pandas, NumPy  
+- Scikit-learn  
+- Flask  
+- Joblib  
+- Pytest  
+- Git / GitHub
 
 ---
 
