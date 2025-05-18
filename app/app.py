@@ -26,11 +26,9 @@ def predict():
         warnings.simplefilter("ignore")
         features_scaled = scaler.transform(features)
         prediction = model.predict(features_scaled)
-    
+
+    print("✅ Prediction complete! Result:", bool(prediction[0]))
     return jsonify({"fraud": bool(prediction[0])})
-
-print("✅ Prediction complete! Result:", bool(prediction[0]))
-
 
 if __name__ == "__main__":
     app.run(debug=True)
