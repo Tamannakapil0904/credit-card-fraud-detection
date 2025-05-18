@@ -24,5 +24,6 @@ def predict():
     prediction = model.predict(features_scaled)
     return jsonify({"fraud": bool(prediction[0])})
 
+
 if __name__ == "__main__":
     app.run(debug=True)
